@@ -1,0 +1,63 @@
+/* Upload.css */
+
+.upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    max-width: 100%;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.upload-title {
+    font-size: 2rem;
+    color: #2d3436;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.upload-input {
+    font-size: 1rem;
+    padding: 10px;
+    border: 2px solid #74b9ff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.upload-input:hover,
+.upload-input:focus {
+    border-color: #0984e3;
+}
+
+.image-display.fullscreen {
+    display: flex;
+    justify-content: space-between;
+    /* Adjusts spacing between images */
+    align-items: center;
+    width: 100%;
+    /* Full container width */
+    height: 70vh;
+    /* Reduced height for a more balanced view */
+    gap: 0;
+    /* Remove gap to prevent overflow */
+    overflow: hidden;
+    /* Prevent overflow */
+}
+
+.uploaded-image {
+    width: 49%;
+    /* Slightly less than half to avoid overflow */
+    height: 100%;
+    object-fit: cover;
+    /* Ensures image covers the cell */
+    border: 2px solid #74b9ff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
