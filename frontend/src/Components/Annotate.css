@@ -1,0 +1,33 @@
+/* Annotate.css */
+.annotation-container {
+    text-align: center;
+    color: #ffffff;
+    padding: 40px;
+}
+
+.large-image {
+    max-width: 80%;
+    height: auto;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.image-2-container {
+      position: relative;
+  width: 80%; /* Adjust this to increase/decrease the image container width */
+  max-width: 1000px; /* Set a max-width to limit scaling */
+  margin: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.slider-container {
+    margin-top: 20px;
+}
