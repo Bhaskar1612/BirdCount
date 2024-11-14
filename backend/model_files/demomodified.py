@@ -337,14 +337,14 @@ def run_one_image_nomongo(samples, boxes, pos, model, orig_image_size):
     plot_heatmap(density_map, pred_cnt, heatmap_buffer)
     heatmap_buffer.seek(0)
     #heatmap_file_id = fs.put(heatmap_buffer, filename='heatmap.png', content_type='image/png')
-    pred_cnt = int(pred_cnt + 0.99)
+    pred_cnt_ceil = int(pred_cnt + 0.99)
     # Thresholding the density map
    
     # Convert cluster centers to a format suitable for JSON serialization
     # This will be useful for sending data to the frontend
     
      # Include cluster_centers_json in the return statement
-    return pred_cnt, et.duration, blended_image_clamped, density_map
+    return pred_cnt_ceil, et.duration, blended_image_clamped, density_map, pred_cnt
 
 def run_one_image(samples, boxes, pos, model,fs, orig_image_size):
     _, _, h, w = samples.shape
@@ -678,7 +678,7 @@ def run_demo_image_nomongo(image):
     boxes = boxes.unsqueeze(0).to(device, non_blocking=True)
     orig_image_size = samples.shape[2:]  # Capture the original image size
     # Now, run_one_image returns the density_map as well
-    pred_cnt, elapsed_time, heatmap_file, density_map = run_one_image_nomongo(samples, boxes, pos, model, orig_image_size)
+    pred_cnt_int, elapsed_time, heatmap_file, density_map, pred_cnt_flt = run_one_image_nomongo(samples, boxes, pos, model, orig_image_size)
 
     # Compute scale factors based on the original image size and the processed size
     scale_factors = {'W': orig_image_size[1]/density_map.shape[1], 'H': orig_image_size[0]/density_map.shape[0]}
@@ -696,7 +696,17 @@ def run_demo_image_nomongo(image):
             subgrid = density_map[int(i * density_map_height / 3):int((i + 1) * density_map_height / 3), int(j * density_map_width / 3):int((j + 1) * density_map_width / 3)]
             subgrid_count = torch.sum(subgrid / 60).item()
             subgrid_counts.append(subgrid_count)
-    return pred_cnt, elapsed_time, heatmap_file, cluster_centers_sets, orig_image_size, subgrid_counts
+
+    # subgridcnts are floats, put into format of [(int, float), (int, float), ...] where int is rounded (not floored) and flt is decimal part
+    subgrid_counts_with_error = []
+    for subgrid_count in subgrid_counts:
+        subgrid_count_int = int(subgrid_count)
+        subgrid_count_flt = subgrid_count - subgrid_count_int
+        subgrid_counts_with_error.append((subgrid_count_int, subgrid_count_flt))
+    
+
+
+    return pred_cnt_int, elapsed_time, heatmap_file, cluster_centers_sets, orig_image_size, subgrid_counts, pred_cnt_flt, subgrid_counts_with_error
 
 def run_demo_clusters(file_id, fs ,checkpoint_path=None):
     if not checkpoint_path:

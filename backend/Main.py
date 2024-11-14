@@ -24,7 +24,7 @@ app.add_middleware(
 
 def helper_get_heatmap(file: UploadFile = File(...)):
     image = Image.open(file.file)
-    count, elapsed_time, heatmap_file, cluster_centers, image_dimensions,grid_counts = demo.run_demo_image_nomongo(image)
+    count, elapsed_time, heatmap_file, cluster_centers, image_dimensions,subgrid_counts,pred_cnt_flt,subgridcounts_error = demo.run_demo_image_nomongo(image)
     return heatmap_file
 
 
@@ -42,19 +42,18 @@ async def predict(file: UploadFile = File(...)):
 
 def helper_get_gridmap(file: UploadFile = File(...)):
     image = Image.open(file.file)
-    count, elapsed_time, heatmap_file, cluster_centers, image_dimensions,grid_counts = demo.run_demo_image_nomongo(image)
-    return grid_counts
+    count, elapsed_time, heatmap_file, cluster_centers, image_dimensions,subgrid_counts,pred_cnt_flt,subgridcounts_error = demo.run_demo_image_nomongo(image)
+    return subgridcounts_error
 
 @app.post("/model_gridmap/")
 async def predict(file: UploadFile = File(...)):
     gridmap=helper_get_gridmap(file)
-    print(sum(gridmap))
     return gridmap
 
 def helper_get_count(file: UploadFile = File(...)):
     image = Image.open(file.file)
-    count, elapsed_time, heatmap_file, cluster_centers, image_dimensions,grid_counts = demo.run_demo_image_nomongo(image)
-    return count
+    count, elapsed_time, heatmap_file, cluster_centers, image_dimensions,subgrid_counts,pred_cnt_flt,subgridcounts_error = demo.run_demo_image_nomongo(image)
+    return pred_cnt_flt
 
 @app.post("/model_count/")
 async def predict(file: UploadFile = File(...)):
@@ -63,7 +62,7 @@ async def predict(file: UploadFile = File(...)):
 
 def helper_get_cluster(file: UploadFile = File(...)):
     image = Image.open(file.file)
-    count, elapsed_time, heatmap_file, cluster_centers, image_dimensions,grid_counts = demo.run_demo_image_nomongo(image)
+    count, elapsed_time, heatmap_file, cluster_centers, image_dimensions,subgrid_counts,pred_cnt_flt,subgridcounts_error = demo.run_demo_image_nomongo(image)
     return cluster_centers
 
 @app.post("/model_cluster/")

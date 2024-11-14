@@ -92,12 +92,6 @@ const fetchModelArray = async (formData) => {
   }
 };
 
-const goToAnnotationPage = () => {
-    navigate('/annotate', { state: { file: originalFile } });
-  };
-
-
-
   return (
     <div className="container">
       <h2>Welcome to <span>Bird Count</span></h2>
@@ -107,7 +101,7 @@ const goToAnnotationPage = () => {
       </label>
       <input id="file-upload" type="file" accept="image/*" onChange={handleImageUpload} />
       {count !==null && (
-    <h3>Count = {count} </h3>
+    <h3>Count = {Math.floor(count)} +- {(count - Math.floor(count)).toFixed(2)} </h3>
   )}
       <div className="image-display">
   {originalImage && (
@@ -134,16 +128,19 @@ const goToAnnotationPage = () => {
           <h4>Number Grid</h4>
           <div className="number-grid">
             {gridMap.map((number, index) => (
-              <div key={index} className="number-cell">{number}</div>
+              <div key={index} className="number-cell">{number[0]} +- {number[1].toFixed(2)}</div>
             ))}
   </div>
   </div>
   )}
     </div>
     {originalImage && (
-        <button className="custom-upload-button" onClick={goToAnnotationPage}>
-          Annotate
+      <div>
+        <h3>Submit a feedback in case you notice any error.</h3>
+        <button className="custom-upload-button">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoujoShTU4cnOUPsJ0vhaCwVMGW_iFVLoqVUK2NVWlSLIKkw/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">FeedBack Form</a>
         </button>
+      </div>
       )}
     </div>
   );
