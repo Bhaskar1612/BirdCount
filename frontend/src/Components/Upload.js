@@ -96,12 +96,13 @@ const fetchModelArray = async (formData) => {
     <div className="container">
       <h2>Welcome to <span>Bird Count</span></h2>
       <p class="text-xs">Our platform leverages advanced deep learning to count birds for ecological research accurately. Bird Count aids researchers in efficient data collection, supporting vital bird population monitoring.</p>
+      {!count && (<p class="text-xs">Upload your image to get the count. This is a research project at IIITD. If you upload an image, it will not be saved by us.</p>)}
       <label htmlFor="file-upload" className="custom-upload-button">
         Upload Image
       </label>
       <input id="file-upload" type="file" accept="image/*" onChange={handleImageUpload} />
       {count !==null && (
-    <h3>Count = {Math.floor(count)} +- {(count - Math.floor(count)).toFixed(2)} </h3>
+    <h3>Total Count = {Math.floor(count)} +- {(count - Math.floor(count)).toFixed(2)} </h3>
   )}
       <div className="image-display">
   {originalImage && (
@@ -125,7 +126,7 @@ const fetchModelArray = async (formData) => {
   )}
   {gridMap && gridMap.length>0 && (
   <div className="number-grid-container">
-          <h4>Number Grid</h4>
+          <h4>Count Of Each Grid</h4>
           <div className="number-grid">
             {gridMap.map((number, index) => (
               <div key={index} className="number-cell">{number[0]} +- {number[1].toFixed(2)}</div>
@@ -136,7 +137,7 @@ const fetchModelArray = async (formData) => {
     </div>
     {originalImage && (
       <div>
-        <h3>Submit a feedback in case you notice any error.</h3>
+        <h3>Submit a feedback in case you notice any error in the estimated count by the model.</h3>
         <button className="custom-upload-button">
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoujoShTU4cnOUPsJ0vhaCwVMGW_iFVLoqVUK2NVWlSLIKkw/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">FeedBack Form</a>
         </button>
