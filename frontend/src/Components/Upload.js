@@ -133,7 +133,7 @@ const fetchModelArray = async (formData) => {
             ))}
   </div>
   </div>
-  )}
+  )}*
     </div>
     {originalImage && (
       <div>
