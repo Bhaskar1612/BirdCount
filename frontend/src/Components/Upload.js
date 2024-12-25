@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Upload.css';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Upload() {
   const [originalImage, setOriginalImage] = useState(null);
@@ -141,6 +142,15 @@ const fetchModelArray = async (formData) => {
         <button className="custom-upload-button">
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoujoShTU4cnOUPsJ0vhaCwVMGW_iFVLoqVUK2NVWlSLIKkw/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">FeedBack Form</a>
         </button>
+        <h3>Help us improve the model</h3>
+        <button className="custom-upload-button"><Link
+          to={{
+            pathname: '/annotate',
+          }}
+          state={{ file: originalFile }}
+        >
+          Go to Annotate
+        </Link></button>
       </div>
       )}
     </div>
