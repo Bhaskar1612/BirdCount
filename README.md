@@ -1,4 +1,4 @@
-# Wildlife Project (Birdcount Specific Version)
+# Wildlife Project (Birdcount Specific Public Beta Repository)
 A web application with a FastAPI backend and a React frontend designed for Human-in-the-Loop Visual Wildlife Monitoring Systems.
 
 ## Installation Options
