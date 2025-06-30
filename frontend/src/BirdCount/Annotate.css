@@ -1,0 +1,113 @@
+/* Preserve pixel values for image size */
+.large-image {
+    width: 480px;
+    height: 384px;
+    position: relative;
+    border-radius: 8px;
+}
+
+/* Container around the annotation area */
+.annotation-container {
+    text-align: center;
+    padding: 40px 20px;
+    background: #999393;
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* Header controls (mode toggle & add box) */
+.annotation-controls {
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* Main image wrapper */
+.image-2-container {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+}
+
+/* Overlay for dots and selection */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Button base style */
+button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
+    transform: translateY(-1px);
+}
+
+/* Primary buttons */
+.save-button,
+.crop-button,
+.annotation-controls button {
+    background: #4CAF50;
+    color: #fff;
+}
+
+.save-button:hover,
+.crop-button:hover {
+    background: #45a049;
+}
+
+.annotation-controls button:hover {
+    background: #5cbf60;
+}
+
+/* Action buttons area */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+/* Dot styles (1px squares) */
+.overlay rect {
+    fill: #2196F3;
+    stroke: #fff;
+    stroke-width: 1px;
+}
+
+/* Selection rectangle */
+.image-2-container div[style*="dashed red"] {
+    border-radius: 4px;
+}
+
+/* Bounding box frame */
+.rnd-container {
+    /* react-rnd wrapper */
+    position: absolute;
+}
+
+.rnd-container>div {
+    border: 2px solid #e53935;
+    border-radius: 6px;
+    pointer-events: all;
+}

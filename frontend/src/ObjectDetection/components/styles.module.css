@@ -1,0 +1,1427 @@
+/*=============================================
+=            1. CSS Reset & Base             =
+=============================================*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 1024px; /* Minimum width before horizontal scroll appears */
+  overflow-x: auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+h1,
+h2,
+h3 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/*=============================================
+=            2. Layout & Container           =
+=============================================*/
+
+.container {
+  position: relative;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.main-content {
+  margin: 0;
+}
+
+/*=============================================
+=            3. Header & Navigation          =
+=============================================*/
+
+.App-header {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(248, 249, 250, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logos at ends, nav-links flex in middle */
+  gap: 32px; /* uniform spacing between logo, links, profile, logos */
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1500px;
+  height: 64px;
+}
+
+.nav-links {
+  flex: 1; /* fill space between logos */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center the four links+profile */
+  gap: 32px; /* fixed gap between each item */
+  margin: 0; /* remove auto centering */
+}
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 0;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0066cc;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-group {
+  margin-left: 0; /* no extra push needed */
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.small-logo {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* active learning */
+.active-learning-link {
+  position: relative;
+}
+
+.notification-dot {
+  height: 8px;
+  width: 8px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  transform-origin: center;
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/*=============================================
+=            4. Footer & Utilities           =
+=============================================*/
+
+.App-footer {
+  background-color: #f8f9fa;
+  color: #333;
+  text-align: center;
+  padding: 0.5rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Utility Classes */
+/* Add any additional utility classes here */
+
+/*=============================================
+=            5. Landing Page                 =
+=============================================*/
+
+.landing-page {
+  min-height: 100vh;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.cta-button {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cta-button:hover {
+  background-color: #0052a3;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.feature-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/*=============================================
+=        6. Components (Upload/View)         =
+=============================================*/
+
+.upload-section,
+.view-section {
+  background-color: white;
+  border-radius: 16px;
+  height: 250px;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: default;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.view-section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section.selected,
+.view-section.selected {
+  border: 2px solid #4299e1;
+  background-color: #ebf8ff;
+}
+
+.upload-section.upload-success {
+  border: 2px solid #48bb78;
+  background-color: #f0fff4;
+}
+
+.upload-section.upload-error {
+  border: 2px solid #f56565;
+  background-color: #fff5f5;
+}
+
+.upload-section.drag-active {
+  border: 2px dashed #4299e1;
+  background-color: #ebf8ff;
+}
+
+.file-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.file-input::-webkit-file-upload-button {
+  display: none;
+}
+
+.upload-content,
+.view-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.upload-icon,
+.view-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.upload-content h3,
+.view-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.75rem;
+}
+
+.upload-content p,
+.view-content p {
+  color: #4a606c;
+  font-size: 1rem;
+}
+
+.status-message {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.status-message.success {
+  background-color: #48bb78;
+  color: white;
+}
+
+.status-message.error {
+  background-color: #f56565;
+  color: white;
+}
+
+.status-message.info {
+  background-color: #4299e1;
+  color: white;
+}
+
+.file-count {
+  margin-top: 1rem;
+  color: #4a5568;
+  font-size: 0.9rem;
+}
+
+.upload-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.upload-button {
+  width: 100%;
+  min-width: 200px;
+  max-width: 300px;
+  aspect-ratio: 16 / 10;
+  position: relative;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.upload-button:hover {
+  transform: translateY(-4px);
+  border-color: #0066cc;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+}
+
+.upload-button input[type="file"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  color: transparent;
+}
+
+.upload-button input[type="file"]::-webkit-file-upload-button {
+  display: none;
+}
+
+.upload-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  padding: 1.5rem;
+}
+
+.upload-button h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0;
+}
+
+.upload-icon {
+  font-size: 2.5rem;
+  color: #0066cc;
+  margin-bottom: 1rem;
+}
+
+.upload-details {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+/*=============================================
+=            7. Modals                       =
+=============================================*/
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  z-index: 1002;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  max-width: 90vw;
+  max-height: 90vh;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  z-index: 1001;
+}
+
+.modal-image-container {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 80vw;
+  max-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-image {
+  width: auto;
+  height: auto;
+  max-width: 80vw;
+  max-height: 80vh;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.modal-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.control-button,
+.save-button {
+  min-width: 80px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: clamp(6px, 1vw, 10px);
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-button {
+  background-color: #2196f3;
+  color: white;
+}
+
+.add-button:hover {
+  background-color: #1976d2;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.add-button:active {
+  background-color: #1565c0;
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.save-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.save-button:active {
+  background-color: #388e3c;
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.modal-metadata {
+  width: 100%;
+  padding: 5px 10px;
+  text-align: left;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+/*=============================================
+=        8. Bounding Box                    =
+=============================================*/
+
+.bounding-box {
+  position: absolute;
+  border: 2px solid #00ff00;
+}
+
+.bounding-box:hover {
+  border-color: #00ff00;
+  cursor: move;
+}
+
+.category-input {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2px 5px;
+  background-color: transparent;
+  border: none;
+  font-size: 12px;
+  color: #00ff00;
+}
+
+.category-input:focus {
+  outline: none;
+}
+
+.remove-button {
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  width: 20px;
+  height: 20px;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  z-index: 1000;
+}
+
+.remove-button:hover {
+  background-color: #cc0000;
+}
+
+/* Resize Handles */
+.resize-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border: none;
+  z-index: 1000;
+}
+
+.resize-handle.nw {
+  top: -5px;
+  left: -5px;
+  cursor: nw-resize;
+}
+
+.resize-handle.ne {
+  top: -5px;
+  right: -5px;
+  cursor: ne-resize;
+}
+
+.resize-handle.sw {
+  bottom: -5px;
+  left: -5px;
+  cursor: sw-resize;
+}
+
+.resize-handle.se {
+  bottom: -5px;
+  right: -5px;
+  cursor: se-resize;
+}
+
+/*=============================================
+=            9. Collage                      =
+=============================================*/
+
+/* Collage Styles */
+.collage {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0 0.25rem;
+  width: 100%;
+  max-width: 1500px;
+  margin: 10px auto 50px;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.collage-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1 1 20%;
+  max-width: 400px;
+}
+
+.collage::-webkit-scrollbar {
+  height: 8px;
+}
+
+.collage::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.collage::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.collage::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.collage-image {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.collage-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/*=============================================
+=        10. Navigation Bar & Filters        =
+=============================================*/
+
+/* Container for Filter + Download button in ObjectDetection component */
+.object-detection-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  /* background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; */
+  gap: 10px;
+  min-height: 60px;
+  box-sizing: border-box;
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Container used inside ClassFilter component */
+.navigation-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-area {
+  position: relative; /* Anchor for dropdown */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between button and tags */
+}
+
+/* Filter Button Styles */
+.filter-button {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s ease;
+  min-height: 40px;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.filter-button:hover {
+  background-color: #0052a3;
+}
+
+/* Download Button Styles */
+.download-button {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  min-height: 40px;
+  box-sizing: border-box;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.download-button:hover:not(:disabled) {
+  background-color: #0052a3;
+}
+
+.download-button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.filter-button .arrow {
+  font-size: 0.7em;
+  transition: transform 0.2s ease;
+}
+
+/* Container for selected filter tags */
+.selected-filters-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* Individual filter tag style */
+.filter-tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e9ecef;
+  color: #495057;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Remove button ('x') on the tag */
+.remove-tag-button {
+  background: none;
+  border: none;
+  color: #6c757d;
+  margin-left: 6px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  font-weight: bold;
+}
+
+.remove-tag-button:hover {
+  color: #dc3545;
+}
+
+/* --- Dropdown and Side Menu --- */
+
+/* Main dropdown menu (for categories) */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 5px); /* Position below the filter button */
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 180px; /* Minimum width for category list */
+  padding: 5px 0; /* Padding top/bottom */
+}
+
+/* Category option (e.g., "Species") */
+.category-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 8px 15px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.category-option:hover {
+  background-color: #f0f0f0; /* Highlight on hover */
+}
+
+.category-option.active {
+  background-color: #e0e0e0; /* Slightly darker for active category */
+  font-weight: 500;
+}
+
+.submenu-arrow {
+  font-size: 0.9em;
+  color: #6c757d;
+}
+
+/* Species side menu */
+.side-menu {
+  position: absolute;
+  top: 0; /* Align top with the main dropdown */
+  left: 100%; /* Position to the right of the main dropdown */
+  margin-left: 1px; /* Small gap */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1); /* Shadow indicating elevation */
+  z-index: 1001; /* Above main dropdown */
+  width: 250px; /* Fixed width for the species list */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Search container within side menu */
+.search-container-side {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.search-input-side {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+/* Species list container */
+.class-list-side {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 5px 0;
+}
+
+/* Individual species option button */
+.class-option-side {
+  display: block;
+  width: 100%;
+  padding: 8px 15px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.class-option-side:hover {
+  background-color: #f0f0f0;
+}
+
+.class-option-side.selected {
+  background-color: #007bff; /* Blue background for selected */
+  color: white;
+  font-weight: 500;
+}
+
+.class-option-side.highlighted {
+  background-color: #d0e7ff; /* Light blue highlight for keyboard nav */
+  color: #0056b3;
+}
+
+.no-results-side {
+  padding: 10px 15px;
+  color: #6c757d;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.box-count-filter-controls {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.box-count-select,
+.box-count-input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.box-count-input {
+  width: 80px;
+}
+
+.box-count-apply-button {
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.box-count-apply-button:hover {
+  background-color: #0056b3;
+}
+
+/* search bar above filters */
+.search-input {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/*=============================================
+=           11. Notifications                =
+============================================= */
+
+.notification {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  color: white;
+  font-weight: 600;
+  opacity: 0;
+  animation: fadeInOut 3s forwards;
+  z-index: 1005;
+}
+
+.success {
+  background-color: #48bb78;
+}
+
+.error {
+  background-color: #f56565;
+}
+
+@keyframes fadeInOut {
+  0% {
+    top: -60px;
+    opacity: 0;
+  }
+  10% {
+    top: 20px;
+    opacity: 1;
+  }
+  90% {
+    top: 20px;
+    opacity: 1;
+  }
+  100% {
+    top: -60px;
+    opacity: 0;
+  }
+}
+
+/*=============================================
+=        12. Fallbacks & Empty States        =
+=============================================*/
+
+.no-results {
+  padding: 15px;
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.fallback-image {
+  width: 100%;
+  max-width: 1500px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/*=============================================
+=        13. react-select elements            =
+=============================================*/
+
+:global(.select__control) {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+:global(.select__control:hover) {
+  border-color: transparent !important;
+}
+
+:global(.select__single-value) {
+  color: #00ff00 !important;
+}
+
+:global(.select__menu) {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+:global(.select__menu-list) {
+  scrollbar-width: thin;
+  scrollbar-color: #00ff00 rgba(0, 0, 0, 0.2);
+}
+
+:global(.select__menu-list::-webkit-scrollbar) {
+  width: 6px;
+}
+
+:global(.select__menu-list::-webkit-scrollbar-track) {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+:global(.select__menu-list::-webkit-scrollbar-thumb) {
+  background: #00ff00;
+  border-radius: 3px;
+}
+
+:global(.select__menu-list::-webkit-scrollbar-thumb:hover) {
+  background: #00cc00;
+}
+
+:global(.select__option) {
+  background-color: transparent !important;
+  color: #00ff00 !important;
+}
+
+:global(.select__option--is-focused) {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+:global(.select__dropdown-indicator svg) {
+  fill: #00ff00 !important;
+}
+
+:global(.select__indicator-separator) {
+  display: none !important;
+}
+
+:global(.select__input-container) {
+  color: #00ff00 !important;
+}
+
+/*=============================================
+=        13. consent                          =
+=============================================*/
+
+.consent-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.consent-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+}
+
+.consent-content h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.consent-content ul {
+  text-align: left;
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.consent-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.consent-buttons button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.consent-buttons button:first-child {
+  background: #e0e0e0;
+}
+
+.consent-buttons button:last-child {
+  background: #4caf50;
+  color: white;
+}
+
+/*=============================================
+=        14. active-learning                  =
+=============================================*/
+
+.active-learning-page {
+  min-height: 100vh;
+}
+
+.active-learning-main {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 0;
+}
+
+.active-learning-empty-state {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.active-learning-empty-state p {
+  font-size: 1.2rem;
+}
+
+.active-learning-cta-button {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  width: 20ch;
+  height: 3rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.active-learning-cta-button:hover {
+  background-color: #0052a3;
+}
+
+.active-learning-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  gap: 20px;
+}
+
+.active-learning-options {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.active-learning-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+}
+
+.active-learning-select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.active-learning-select:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+}
+
+.collage-image-wrapper {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 0;
+}
+
+.image-select-checkbox {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 2;
+  display: none;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.collage-image-wrapper:hover .image-select-checkbox {
+  display: block;
+}
+
+.selected-image {
+  border: 4px solid #4299e1;
+  box-sizing: border-box;
+}
+
+.navOverlayLeft,
+.navOverlayRight {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 10vw;
+  z-index: 1003;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navOverlayLeft {
+  left: 0;
+}
+
+.navOverlayRight {
+  right: 0;
+}
+
+.arrow {
+  color: white;
+  font-size: 3rem;
+  user-select: none;
+}
+
+.navOverlayLeft:hover,
+.navOverlayRight:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.active-learning-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-menu {
+  position: relative;
+  display: flex; /* center the icon vertically */
+  align-items: center;
+}
+
+.menu-list {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 160px;
+}
+
+.menu-list li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.menu-list li:hover {
+  background-color: #f5f5f5;
+}
+
+.menu-list li a,
+.menu-list li button {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+
+.profile-menu .nav-link {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.profile-menu .nav-link:focus {
+  outline: none;
+}
+
+/* Pagination controls */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.pagination button {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.pagination span {
+  font-size: 0.9rem;
+  color: #555;
+}

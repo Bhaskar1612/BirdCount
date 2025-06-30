@@ -1,0 +1,285 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-form input {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.login-form h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.login-form hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.error-text {
+  color: #f56565;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.login-button,
+.guest-button {
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.login-button {
+  margin-top: 0;
+}
+
+.guest-button {
+  background-color: #6c757d;
+  margin-top: 0.5rem;
+}
+
+.login-button:hover,
+.guest-button:hover {
+  background-color: #0052a3;
+}
+
+.AuthRedirect {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.AuthRedirect span {
+  color: #0066cc;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Added Styles */
+.recaptchaContainer {
+  display: flex;
+  justify-content: center; /* Center the reCAPTCHA */
+  margin-top: 0.5rem; /* Add some space above */
+  margin-bottom: 0.5rem; /* Add some space below */
+}
+
+/* Styles for Modal Overlay */
+.modal-overlay {
+  position: fixed; /* Sit on top of the page content */
+  inset: 0; /* Cover the entire viewport */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+  padding: 20px; /* Add padding for smaller screens */
+}
+
+.guest-credentials-display {
+  width: 100%;
+  max-width: 400px; /* Slightly narrower */
+  padding: 1.5rem; /* Reduced padding */
+  background-color: #fff;
+  border-radius: 6px; /* Slightly smaller radius */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Reduced gap */
+  text-align: center;
+  z-index: 1001;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.guest-credentials-display h2 {
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem; /* Slightly smaller title */
+  font-weight: 600;
+}
+
+.warning-text {
+  background-color: transparent; /* Remove background */
+  color: #e74c3c; /* Warning color */
+  padding: 0.5rem 0; /* Reduced padding */
+  border: none; /* Remove border */
+  border-radius: 0;
+  font-size: 0.9rem;
+  text-align: center; /* Center align */
+  margin-bottom: 0.5rem;
+}
+
+.warning-text strong {
+  font-weight: 600; /* Ensure the strong tag inside is bold */
+}
+
+.credential-item-minimal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem; /* Smaller gap */
+  text-align: left;
+  width: 100%;
+}
+
+.credential-item-minimal label {
+  font-weight: 500;
+  color: #666; /* Lighter label color */
+  font-size: 0.8rem; /* Smaller label */
+  text-transform: uppercase; /* Uppercase label */
+}
+
+.credential-value-wrapper-minimal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between value and button */
+  gap: 0.5rem;
+  width: 100%;
+  background-color: #f8f9fa; /* Keep light background */
+  padding: 0.6rem 0.8rem; /* Adjusted padding */
+  border-radius: 4px;
+  border: 1px solid #eee; /* Lighter border */
+}
+
+.credential-value-wrapper-minimal span { /* Target the span directly */
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  color: #333;
+  word-break: break-all;
+  flex-grow: 1;
+}
+
+.copy-button-minimal {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.1rem;
+  line-height: 1;
+  color: #777;
+  transition: color 0.2s ease, filter 0.3s ease, opacity 0.3s ease; 
+  position: relative;
+}
+
+.copy-button-minimal:hover:not(:disabled) { 
+  color: #0066cc;
+}
+
+.copy-button-minimal:disabled {
+  cursor: default;
+}
+
+/* Style for successful copy - grey out the icon */
+.copy-success {
+  filter: grayscale(100%) opacity(60%);
+  cursor: default;
+}
+
+.copy-failed {
+  color: #e74c3c;
+}
+
+.continue-button-minimal {
+  padding: 0.6rem 1.2rem; /* Slightly smaller padding */
+  font-size: 0.95rem; /* Slightly smaller font */
+  font-weight: 500;
+  background-color: #0066cc; /* Back to primary blue */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 0.8rem; /* Reduced margin */
+}
+
+.continue-button-minimal:hover {
+  background-color: #0052a3; /* Darker blue */
+}
+
+.login-button:disabled,
+.guest-button:disabled {
+  background-color: #adb5bd; /* Grey out when disabled */
+  cursor: not-allowed;
+}
+.login-button:disabled:hover,
+.guest-button:disabled:hover {
+   background-color: #adb5bd; /* Keep grey on hover when disabled */
+}
+.password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-input {
+  width: 100%;
+  padding: 0.75rem;
+  padding-right: 2.5rem; /* Leave space for the eye icon */
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 60%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #666;
+  user-select: none;
+}
