@@ -1,7 +1,7 @@
 # Wildlife Project (Birdcount Specific Public Beta Repository)
 A web application with a FastAPI backend and a React frontend designed for Human-in-the-Loop Visual Wildlife Monitoring Systems.
 
-## Codebase fortraining od hosted models - https://github.com/Bhaskar1612/Medical_Imaging_Models
+### Codebase for training of hosted models - https://github.com/Bhaskar1612/Medical_Imaging_Models
 
 ## Installation Options
 Choose **one** of the following installation methods:
