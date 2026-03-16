@@ -1,6 +1,8 @@
 # Wildlife Project (Birdcount Specific Public Beta Repository)
 A web application with a FastAPI backend and a React frontend designed for Human-in-the-Loop Visual Wildlife Monitoring Systems.
 
+## Codebase fortraining od hosted models - https://github.com/Bhaskar1612/Medical_Imaging_Models
+
 ## Installation Options
 Choose **one** of the following installation methods:
 1. Local 
@@ -26,8 +28,6 @@ pip install -r requirements.txt
 ```
 
 3. Download Required Model Files
-   * Download [best.pt](https://drive.google.com/file/d/1jtUWahpwsVpe2QuLxC60z6pPBoZd7KgT/view) – YOLOv5 weights, and place in `backend/ObjectDetection/models/YOLO/runs/train/wii_28_072/weights/best.pt`
-   * Download [bestx.pt](https://drive.google.com/file/d/1v6GjHgQtpGLUnchG0KUaTBUYGx4PQ1Rk/view) – YOLOv8 weights, and place in `backend/ObjectDetection/models/YOLO/runs/train/wii_28_072/weights/bestx.pt`
    * Download [original.pth](https://drive.google.com/file/d/1MiVNz53icmq-Miyn2ML3w0EELx1WDqHi/view) and place in `backend/BirdCount/model_files/pth/original.pth`
 
 4. Setup Environment:
